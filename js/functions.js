@@ -1,39 +1,39 @@
 // task1
-const getIsCompareLengthStr = (str, length) => str.length <= length;
+const IsValidateLengthStr = (str, length) => str.length <= length;
 
-getIsCompareLengthStr('проверяемая строка', 20);
-getIsCompareLengthStr('проверяемая строка', 18);
-getIsCompareLengthStr('проверяемая строка', 10);
+IsValidateLengthStr('проверяемая строка', 20);
+IsValidateLengthStr('проверяемая строка', 18);
+IsValidateLengthStr('проверяемая строка', 10);
 
 // task2
-const getIsPalindrome = (str) => {
-  const normalizeStr = str.replaceAll(' ','').toLowerCase();
+const isPalindrome = (str) => {
+  const normalizedStr = str.replaceAll(' ','').toLowerCase();
   let reverseLine = '';
 
-  for (let i = normalizeStr.length - 1; i >= 0; i--) {
-    reverseLine += normalizeStr.at(i);
+  for (let i = normalizedStr.length - 1; i >= 0; i--) {
+    reverseLine += normalizedStr.at(i);
   }
 
-  return normalizeStr === reverseLine;
+  return normalizedStr === reverseLine;
 };
 
-getIsPalindrome('топот');
-getIsPalindrome('ДовОд');
-getIsPalindrome('Кекс');
-getIsPalindrome('Лёша на полке клопа нашёл ');
+isPalindrome('топот');
+isPalindrome('ДовОд');
+isPalindrome('Кекс');
+isPalindrome('Лёша на полке клопа нашёл ');
 
 // task2 - alternative (faster)
-const getIsPalindromeAlt = (str) => {
-  const normalizedStr = str.replaceAll(' ','').toLowerCase();
-  const palindrome = normalizedStr.split('').reverse().join('');
+const IsPalindromeAlt = (str) => {
+  const normalizedString = str.replaceAll(' ','').toLowerCase();
+  const reversedString = normalizedString.split('').reverse().join('');
 
-  return normalizedStr === palindrome;
+  return normalizedString === reversedString;
 };
 
-getIsPalindromeAlt('Лёша на полке клопа нашёл ');
+IsPalindromeAlt('Лёша на полке клопа нашёл ');
 
 // task3
-const getIntNumber = (value) => {
+const getNumber = (value) => {
   const valueStr = value.toString();
   let resultNumber = '';
 
@@ -46,11 +46,11 @@ const getIntNumber = (value) => {
   return parseInt(resultNumber, 10);
 };
 
-getIntNumber('ECMAScript 2022');
-getIntNumber('2023 год');
-getIntNumber('1 кефир, 0.5 батона');
-getIntNumber('агент 007');
-getIntNumber('а я томат');
-getIntNumber(2023);
-getIntNumber(-1);
-getIntNumber(1.5);
+getNumber('ECMAScript 2022');
+getNumber('2023 год');
+getNumber('1 кефир, 0.5 батона');
+getNumber('агент 007');
+getNumber('а я томат');
+getNumber(2023);
+getNumber(-1);
+getNumber(1.5);

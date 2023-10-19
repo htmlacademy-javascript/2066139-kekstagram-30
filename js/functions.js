@@ -1,9 +1,9 @@
 // task1
-const IsValidateLengthStr = (str, length) => str.length <= length;
+const IsStrLengthValid = (str, length) => length >= str.length;
 
-IsValidateLengthStr('проверяемая строка', 20);
-IsValidateLengthStr('проверяемая строка', 18);
-IsValidateLengthStr('проверяемая строка', 10);
+IsStrLengthValid('проверяемая строка', 20);
+IsStrLengthValid('проверяемая строка', 18);
+IsStrLengthValid('проверяемая строка', 10);
 
 // task2
 const isPalindrome = (str) => {
@@ -25,9 +25,8 @@ isPalindrome('Лёша на полке клопа нашёл ');
 // task2 - alternative (faster)
 const IsPalindromeAlt = (str) => {
   const normalizedString = str.replaceAll(' ','').toLowerCase();
-  const reversedString = normalizedString.split('').reverse().join('');
 
-  return normalizedString === reversedString;
+  return normalizedString === normalizedString.split('').reverse().join('');
 };
 
 IsPalindromeAlt('Лёша на полке клопа нашёл ');

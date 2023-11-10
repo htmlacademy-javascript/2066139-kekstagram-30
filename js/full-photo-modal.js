@@ -2,8 +2,8 @@ import {isEscapeKey} from './util.js';
 import {renderDataUserPost} from './loading-modal-data.js';
 
 const bodyScrollElement = document.querySelector('body');
-const userPostModalElement = document.querySelector('.big-picture');
-const userPostModalCloseElement = document.querySelector('#picture-cancel');
+const userPostModalElement = bodyScrollElement.querySelector('.big-picture');
+const userPostModalCloseElement = bodyScrollElement.querySelector('#picture-cancel');
 const socialCommentList = userPostModalElement.querySelector('.social__comments');
 
 const onDocumentKeydown = (evt) => {
@@ -13,12 +13,12 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-function openUserPostModal ({urlPhoto, description, likes, comments}) {
+function openUserPostModal (pictureItem) {
   bodyScrollElement.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
   userPostModalCloseElement.addEventListener('click', closeUserPostModal);
 
-  renderDataUserPost(urlPhoto, description, likes, comments);
+  renderDataUserPost(pictureItem);
   userPostModalElement.classList.remove('hidden');
 }
 

@@ -32,8 +32,11 @@ const renderThumbnails = (pictures) => {
 const onThumbnailClick = (pictures) => {
   thumbnailContainer.addEventListener('click', (evt) => {
     const thumbnailLink = evt.target.closest('a.picture');
+
     if (thumbnailLink) {
+
       const thumbnailItem = pictures[thumbnailLink.dataset.index];
+
       if (thumbnailItem) {
         openUserPostModal(thumbnailItem);
       }

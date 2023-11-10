@@ -1,10 +1,19 @@
 import {createElement} from './util.js';
 
 const userPostModalElement = document.querySelector('.big-picture');
+const socialCommentList = userPostModalElement.querySelector('.social__comments');
+const commentCount = userPostModalElement.querySelector('.social__comment-count');
+const commentsLoader = userPostModalElement.querySelector('.comments-loader');
+
+const fullSizePhoto = userPostModalElement.querySelector('.big-picture__img img');
+const socialCaption = userPostModalElement.querySelector('.social__caption');
+const likesCount = userPostModalElement.querySelector('.likes-count');
+
+const commentShownCount = userPostModalElement.querySelector('.social__comment-shown-count');
+const commentTotalCount = userPostModalElement.querySelector('.social__comment-total-count');
 
 const getListСomments = (comments) => {
   const commentListFragment = document.createDocumentFragment();
-  const socialCommentList = userPostModalElement.querySelector('.social__comments');
 
   comments.forEach((comment) => {
     const socialCommentItem = createElement('li', 'social__comment');
@@ -22,17 +31,7 @@ const getListСomments = (comments) => {
   return socialCommentList.append(commentListFragment);
 };
 
-const renderDataUserPost = (urlPhoto, description, likes, comments) => {
-  const commentCount = userPostModalElement.querySelector('.social__comment-count');
-  const commentsLoader = userPostModalElement.querySelector('.comments-loader');
-
-  const fullSizePhoto = userPostModalElement.querySelector('.big-picture__img img');
-  const socialCaption = userPostModalElement.querySelector('.social__caption');
-  const likesCount = userPostModalElement.querySelector('.likes-count');
-
-  const commentShownCount = userPostModalElement.querySelector('.social__comment-shown-count');
-  const commentTotalCount = userPostModalElement.querySelector('.social__comment-total-count');
-
+const renderDataUserPost = ({urlPhoto, description, likes, comments}) => {
   commentsLoader.classList.add('hidden'); //temp
   commentCount.classList.add('hidden'); //temp
 

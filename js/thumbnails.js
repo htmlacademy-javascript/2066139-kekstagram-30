@@ -1,4 +1,4 @@
-import {openUserPostModal} from './fullPhotoModal.js';
+import {openUserPostModal} from './full-photo-modal.js';
 
 const thumbnailContainer = document.querySelector('.pictures');
 const thumbnailTemplate = document.querySelector('#picture')

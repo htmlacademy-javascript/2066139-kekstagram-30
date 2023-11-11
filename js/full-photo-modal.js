@@ -5,8 +5,8 @@ const NUMBER_LOAD_COMMENTS = 5;
 const bodyScrollElement = document.querySelector('body');
 const userPostModalElement = bodyScrollElement.querySelector('.big-picture');
 const userPostModalCloseElement = bodyScrollElement.querySelector('#picture-cancel');
-const socialCommentList = userPostModalElement.querySelector('.social__comments');
-const commentsLoader = userPostModalElement.querySelector('.comments-loader');
+const socialCommentListElement = userPostModalElement.querySelector('.social__comments');
+const commentsLoaderElement = userPostModalElement.querySelector('.comments-loader');
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -16,15 +16,15 @@ const onDocumentKeydown = (evt) => {
 };
 
 const onCommentsLoad = () => {
-  const userComments = socialCommentList.querySelectorAll('.social__comment.hidden');
+  const commentsHiddenElement = socialCommentListElement.querySelectorAll('.social__comment.hidden');
 
-  if (userComments.length > NUMBER_LOAD_COMMENTS) {
+  if (commentsHiddenElement.length > NUMBER_LOAD_COMMENTS) {
     for (let i = 0; i < NUMBER_LOAD_COMMENTS; i++) {
-      userComments[i].classList.remove('hidden');
+      commentsHiddenElement[i].classList.remove('hidden');
     }
   } else {
-    userComments.forEach((comment) => comment.classList.remove('hidden'));
-    commentsLoader.classList.add('hidden');
+    commentsHiddenElement.forEach((comment) => comment.classList.remove('hidden'));
+    commentsLoaderElement.classList.add('hidden');
   }
 
   updateShownCommentCount();
@@ -35,14 +35,14 @@ function openUserPostModal (pictureItem) {
   document.addEventListener('keydown', onDocumentKeydown);
   userPostModalCloseElement.addEventListener('click', closeUserPostModal);
 
-  socialCommentList.innerHTML = '';
+  socialCommentListElement.innerHTML = '';
   renderDataUserPost(pictureItem);
 
-  if (socialCommentList.children.length <= NUMBER_LOAD_COMMENTS) {
-    commentsLoader.classList.add('hidden');
+  if (socialCommentListElement.children.length <= NUMBER_LOAD_COMMENTS) {
+    commentsLoaderElement.classList.add('hidden');
   } else {
-    commentsLoader.classList.remove('hidden');
-    commentsLoader.addEventListener('click', onCommentsLoad);
+    commentsLoaderElement.classList.remove('hidden');
+    commentsLoaderElement.addEventListener('click', onCommentsLoad);
   }
 
   userPostModalElement.classList.remove('hidden');
@@ -52,8 +52,8 @@ function closeUserPostModal () {
   userPostModalElement.classList.add('hidden');
   bodyScrollElement.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-  commentsLoader.removeEventListener('click', onCommentsLoad);
-  socialCommentList.innerHTML = ''; // очищаем список комментариев
+  commentsLoaderElement.removeEventListener('click', onCommentsLoad);
+  socialCommentListElement.innerHTML = ''; // очищаем список комментариев
 }
 
 export {openUserPostModal};

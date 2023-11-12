@@ -14,14 +14,14 @@ const commentTotalCount = userPostModalElement.querySelector('.social__comment-t
 const getListСomments = (comments) => {
   const commentListFragment = document.createDocumentFragment();
 
-  comments.forEach((comment, index) => {
+  comments.forEach(({avatar, message, name}, index) => {
     const socialCommentItem = createElement('li', 'social__comment');
     const commentatorAvatar = createElement('img', 'social__picture');
-    commentatorAvatar.src = comment.avatar;
-    commentatorAvatar.alt = comment.name;
+    commentatorAvatar.src = avatar;
+    commentatorAvatar.alt = name;
     commentatorAvatar.width = 35;
     commentatorAvatar.height = 35;
-    const commentatorMessage = createElement('p', 'social__text', comment.message);
+    const commentatorMessage = createElement('p', 'social__text', message);
 
     if (index >= START_NUMBER_SHOW_COMMENTS) {
       socialCommentItem.classList.add('hidden');
